@@ -1,6 +1,6 @@
 package spring.vks.didemo.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import spring.vks.didemo.services.GreetingService;
 
@@ -13,17 +13,32 @@ public class ConstructorInjectedController {
 
     private GreetingService greetingService;
 
-    /* Do not need to used @Autowired here
+    /* 01. Do not need to used @Autowired here
      * because around Spring 4.2, they enable automatic
-     * wiring of constructor based DI. But it will not generate any error
-     * if we use @Autowired over here
+     * wiring of constructor based DI. But it will not throw any error
+     * if we use @Autowired over here.
+     *
+     * 02. If we have multiple bean in ApplicationContext then
+     * we used @Qualifier(BeanName) annotation to define which Bean will be going to use.
+     * We can use @Qualifier annotation with method argument ( see below method signature)
+     * or we can use it above the method signature.
+     *
+     * Example:
+     * (A)
+     * @Qualifier(BeanName)
+     * public String foo(){}
+     *
+     * (B)
+     * public String foo(@Qualifier(BeanName) args){}
      */
-    @Autowired
-    public ConstructorInjectedController(GreetingService greetingService) {
+
+    public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
+
         this.greetingService = greetingService;
     }
 
     public String sayHello(){
+
         return  greetingService.sayGreeting();
     }
 }
