@@ -2,8 +2,9 @@ package spring.vks.didemo.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import spring.vks.didemo.services.GreetingServiceImpl;
+import spring.vks.didemo.services.GreetingService;
 
 /**
  * @author Vikas Singh
@@ -13,10 +14,11 @@ import spring.vks.didemo.services.GreetingServiceImpl;
 public class PropertyInjectedController {
 
     @Autowired
-    public GreetingServiceImpl greetingService;
+    @Qualifier("greetingServiceImpl")
+    public GreetingService greetingServiceImpl;
 
     public String sayHello(){
-        return greetingService.sayGreeting();
+        return greetingServiceImpl.sayGreeting();
     }
 
 }
