@@ -15,7 +15,7 @@ public class ConstructorInjectedController {
 
     /* 01. Do not need to used @Autowired here
      * because around Spring 4.2, they enable automatic
-     * wiring of constructor based DI. But it will not throw any error
+     * wiring of constructor based DI. But it will not throw any exception
      * if we use @Autowired over here.
      *
      * 02. If we have multiple bean in ApplicationContext then
@@ -30,6 +30,8 @@ public class ConstructorInjectedController {
      *
      * (B)
      * public String foo(@Qualifier(BeanName) args){}
+     *
+     * By Vikas
      */
 
     public ConstructorInjectedController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
