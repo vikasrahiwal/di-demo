@@ -1,6 +1,7 @@
 package spring.vks.didemo.controllers;
 
 import org.springframework.stereotype.Controller;
+import spring.vks.didemo.services.GreetingService;
 
 /**
  * @author Vikas Singh
@@ -9,8 +10,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MyController {
 
+    private GreetingService greetingService;
+
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     public String contextInit(){
         System.out.println("Context Init");
-        return "foo";
+        return greetingService.sayGreeting();
     }
 }
