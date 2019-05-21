@@ -18,7 +18,7 @@ public class ConstructorInjectedController {
      * wiring of constructor based DI. But it will not throw any exception
      * if we use @Autowired over here.
      *
-     * 02. If we have multiple bean in ApplicationContext then
+     * 02. If we have multiple bean of same type in ApplicationContext then
      * we used @Qualifier(BeanName) annotation to define which Bean will be going to use.
      * We can use @Qualifier annotation with method argument ( see below method signature)
      * or we can use it above the method signature.
