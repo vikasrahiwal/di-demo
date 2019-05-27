@@ -50,7 +50,7 @@ public class LifeCycleDemoBean implements InitializingBean, DisposableBean, Bean
         System.out.println("#7# The LifeCycleBean has its properties set.");//7
     }
 
-    public void afterInit(){
+    public void afterInit() {
         System.out.println("#8# After Init: called by bean Post Processor ");//8
     }
 
